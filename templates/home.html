@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Revenue Optimizer - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fb;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        /* Navigation Styles */
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #3498db;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav a {
+            color: white;
+            font-size: 18px;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Main Content Section */
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            border-bottom: 2px solid #fff;
+            border-radius: 0 0 60% 60%;
+        }
+
+        .hero-section h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #ecf0f1;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-section h2 {
+            font-size: 32px;
+            margin-top: 60px;
+        }
+
+        .hero-section ul {
+            list-style: none;
+            font-size: 18px;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .hero-section ul li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .hero-section ul li::before {
+            content: "✔️";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 18px;
+        }
+
+        /* Button Styles */
+        .get-started-btn {
+            margin-top: 40px;
+            padding: 12px 40px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .get-started-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer / Bottom Section */
+        .footer {
+            text-align: center;
+            font-size: 16px;
+            color: #7f8c8d;
+            padding: 20px 0;
+            background-color: #ecf0f1;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Mobile Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                padding: 80px 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 40px;
+            }
+
+            .hero-section h2 {
+                font-size: 28px;
+            }
+
+            .hero-section p {
+                font-size: 16px;
+                margin: 0 20px;
+            }
+
+            .hero-section ul li {
+                font-size: 16px;
+            }
+
+            .get-started-btn {
+                font-size: 16px;
+                padding: 10px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Horizontal Navigation Bar -->
+    <div class="nav">
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('careers') }}">Careers</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Welcome to CEO Revenue Optimizer</h1>
+        <p>
+            A smart tool designed for business leaders to forecast revenue and gain insights into growth strategies.
+        </p>
+
+        <h2>What can you do here?</h2>
+        <ul>
+            <li>✅ Predict your company’s revenue using key operational metrics</li>
+            <li>✅ Get personalized suggestions powered by Machine Learning</li>
+            <li>✅ View live market predictions and trends</li>
+            <li>✅ Sign up to access premium analysis tools</li>
+        </ul>
+
+        <a href="{{ url_for('login') }}">
+            <button class="get-started-btn">Get Started</button>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 CEO Revenue Optimizer | All Rights Reserved</p>
+    </div>
+
+</body>
+</html>

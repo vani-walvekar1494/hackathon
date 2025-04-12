@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CEO Revenue Optimizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Header & Nav Styling */
+        header {
+            background-color: #3498db;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .welcome {
+            font-size: 16px;
+        }
+
+        .nav-links a {
+            color: white;
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 36px;
+            margin-top: 30px;
+        }
+
+        .section {
+            background-color: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            margin: 30px auto;
+            width: 85%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h3 {
+            color: #3498db;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+            color: #3498db;
+        }
+
+        table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                margin-top: 10px;
+            }
+            .nav-links a {
+                display: inline-block;
+                margin: 10px 10px 0 0;
+            }
+            .section {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="welcome">
+            <strong>Welcome, {{ current_user.username }}!</strong>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('careers') }}">Careers</a>
+        </div>
+    </header>
+
+    <h1>Company Revenue Predictor</h1>
+
+    <!-- Flash or Error Message -->
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+
+    <!-- Stock Data Section -->
+    <div class="section">
+        <h3>🔥 Top Companies Live Stock Data</h3>
+        <table>
+            <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+                <th>Change</th>
+                <th>Change %</th>
+                <th>Latest Trading Day</th>
+            </tr>
+            <tr>
+                <td>AAPL</td>
+                <td>$174.78</td>
+                <td>+1.56</td>
+                <td>+0.90%</td>
+                <td>2025-04-11</td>
+            </tr>
+            <tr>
+                <td>GOOGL</td>
+                <td>$2,538.45</td>
+                <td>-12.30</td>
+                <td>-0.48%</td>
+                <td>2025-04-11</td>
+            </tr>
+            <tr>
+                <td>AMZN</td>
+                <td>$3,320.76</td>
+                <td>+15.40</td>
+                <td>+0.47%</td>
+                <td>2025-04-11</td>
+            </tr>
+            <tr>
+                <td>MSFT</td>
+                <td>$311.52</td>
+                <td>-5.12</td>
+                <td>-1.61%</td>
+                <td>2025-04-11</td>
+            </tr>
+            <tr>
+                <td>TSLA</td>
+                <td>$715.92</td>
+                <td>+9.25</td>
+                <td>+1.31%</td>
+                <td>2025-04-11</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Revenue Prediction Form -->
+    <div class="section">
+        <h3>📊 Predict Your Revenue</h3>
+        <form action="/predict" method="post">
+            <label>Marketing Spend ($):</label>
+            <input type="number" name="marketing_spend" step="0.01" required>
+
+            <label>R&D Investment ($):</label>
+            <input type="number" name="rnd_investment" step="0.01" required>
+
+            <label>Employee Count:</label>
+            <input type="number" name="employee_count" required>
+
+            <label>Operational Costs ($):</label>
+            <input type="number" name="operational_costs" step="0.01" required>
+
+            <label>Customer Satisfaction (1-5):</label>
+            <input type="number" name="customer_satisfaction" step="0.1" min="1" max="5" required>
+
+            <label>Market Share (0.01 - 0.2):</label>
+            <input type="number" name="market_share" step="0.01" min="0.01" max="0.2" required>
+
+            <input type="submit" value="Predict Revenue">
+        </form>
+    </div>
+
+</body>
+</html>

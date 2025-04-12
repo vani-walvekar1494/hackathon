@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: right;
+        }
+        header a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        .welcome {
+            font-size: 18px;
+        }
+        .section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px auto;
+            width: 70%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+        .result-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .predicted-revenue {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2ecc71; /* Green color for the result */
+            margin: 10px 0;
+        }
+        .back-link {
+            font-size: 18px;
+            color: #3498db;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="welcome">
+            <strong>Welcome, {{ current_user.username }}!</strong>
+            <a href="{{ url_for('logout') }}">Logout</a> |
+            <a href="{{ url_for('about') }}">About</a> |
+            <a href="{{ url_for('careers') }}">Careers</a>
+        </div>
+    </header>
+
+    <div class="section">
+        <h1>Revenue Prediction Result</h1>
+        <div class="result-container">
+            <p><strong>Predicted Revenue:</strong></p>
+            <p class="predicted-revenue">${{ predicted_revenue }}</p>
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="back-link">Back to Dashboard</a>
+    </div>
+</body>
+</html>
